@@ -2,15 +2,15 @@
 
 int	main(int ac, char **av)
 {
-	if ((ac == 2 && ft_strcmp("Mandelbrot", av[1])) || (ac == 4 && ft_strcmp("Julia", av[1])))
+	if (!(ac == 2 && ft_strcmp("Mandelbrot", av[1])) || !(ac == 4 && ft_strcmp("Julia", av[1])))
 	{
-	// t_fractal fractal;
-	// // void *mlx;
-	// // void *mlx_win;
+    t_fractal fractal;
 
-	// ft_fractal_init(&fractal);
-	// ft_fractal_render(&fractal);
-	// ft_mlx_loop(fractal.mlx_connexion);
+	fractal.name = av[1];
+	ft_fractal_init(&fractal);
+	ft_fractal_data(&fractal, av[2], av[3]);
+	ft_fractal_render(&fractal);
+	mlx_loop(fractal.mlx_connection);
 	}
 	else 
 		ft_error();

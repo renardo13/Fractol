@@ -6,7 +6,7 @@
 /*   By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:21:56 by melmarti          #+#    #+#             */
-/*   Updated: 2024/01/19 15:28:53 by melmarti         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:38:19 by melmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ static int ft_strlen(char *s)
 
 int ft_strcmp(char *s1, char *s2)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i])
 		i++;
-	if (i == ft_strlen(s2))
-		return (1);
-	else
-		return (0);
+	return (s1[i] - s2[i]);
 }
+
