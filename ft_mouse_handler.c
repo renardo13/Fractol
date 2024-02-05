@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fractal_render.c                                :+:      :+:    :+:   */
+/*   ft_mouse_handler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 14:49:29 by melmarti          #+#    #+#             */
-/*   Updated: 2024/02/02 16:41:40 by melmarti         ###   ########.fr       */
+/*   Created: 2024/02/02 14:49:49 by melmarti          #+#    #+#             */
+/*   Updated: 2024/02/02 16:51:12 by melmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_fractal_render(t_fractal *fractal)
+int	ft_mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-	double	x;
-	double	y;
-
-	y = 0;
-	while (y++ < WIDTH)
-	{
-		x = 0;
-		while (x++ < HEIGHT)
-		{
-			ft_color_pxl(x, y, fractal);
-		}
-	}
-	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
-		fractal->img.img_ptr, 0, 0);
+	(void)x;
+	(void)y;
+	if (button == Button5)
+		fractal->zoom *= 1.05;
+	else if (button == Button4)
+		fractal->zoom *= 0.95;
+	ft_fractal_render(fractal);
+	return (0);
 }

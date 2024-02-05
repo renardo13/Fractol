@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memerror.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/02 14:49:37 by melmarti          #+#    #+#             */
+/*   Updated: 2024/02/02 14:49:38 by melmarti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-void ft_memerror(void)
+void	ft_memerror(void)
 {
-	write (2, "Malloc Error\n", 13);
+	write(2, "Malloc Error\n", 13);
 	exit(EXIT_FAILURE);
 }
