@@ -6,7 +6,7 @@
 /*   By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:49:31 by melmarti          #+#    #+#             */
-/*   Updated: 2024/02/05 18:46:33 by melmarti         ###   ########.fr       */
+/*   Updated: 2024/02/05 19:51:39 by melmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_fractal_init(t_fractal *fractal)
 			&fractal->img.bpp, &fractal->img.line_len, &fractal->img.endian);
 }
 
-/* int	ft_track_mouse(int x, int y, t_fractal *fractal)
+int	ft_track_mouse(int x, int y, t_fractal *fractal)
 {
 
 	(void)x;
@@ -77,5 +77,5 @@ void	ft_fractal_init(t_fractal *fractal)
 		ft_fractal_render(fractal);
 	}
 	return (0);
-} */
+} 
 
