@@ -6,33 +6,25 @@
 /*   By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:49:09 by melmarti          #+#    #+#             */
-/*   Updated: 2024/02/05 19:21:01 by melmarti         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:22:12 by melmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "/home/melmarti/42_projects/fractol/mlx/mlx.h"
-// change the path if you
+# include "mlx/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-// want to launch the program
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 900
+# define HEIGHT 900
 # define BLACK 0x000000 // Noir
 # define WHITE 0xFFFFFF
-# define DARK_GRAY1 0x111111  // Gris foncé 1
-# define DARK_GRAY2 0x222222  // Gris foncé 2
-# define DARK_GRAY3 0x333333  // Gris foncé 3
-# define GRAY1 0x444444       // Gris 1
-# define GRAY2 0x555555       // Gris 2
-# define GRAY3 0x666666       // Gris 3
 # define LIGHT_GRAY1 0x777777 // Gris clair 1
 # define LIGHT_GRAY2 0x888888 // Gris clair 2
 # define LIGHT_GRAY3 0x999999 // Gris clair 3
@@ -47,7 +39,7 @@
 typedef struct s_img
 {
 	void	*img_ptr;
-	char *pixel_ptr; // pointing to 1 byte pixel pointer
+	char	*pixel_ptr;
 	int		bpp;
 	int		endian;
 	int		line_len;
@@ -60,11 +52,12 @@ typedef struct s_fractal
 	void	*mlx_connection;
 	void	*mlx_window;
 	int		iter;
-	double	julia_x;
-	double	julia_y;
 	double	shift_y;
 	double	shift_x;
 	double	zoom;
+	int		colors;
+	double	im;
+	double	real;
 	t_img	img;
 }			t_fractal;
 
@@ -92,9 +85,7 @@ int			ft_key_handler(int keysym, t_fractal *fractal);
 int			ft_close_handler(t_fractal *fractal);
 t_complex	ft_square_complex(t_complex z);
 t_complex	ft_sum_complex(t_complex z1, t_complex z2);
-int			ft_abs(int nb);
 t_complex	ft_remarkable(t_complex z);
 int			ft_mouse_handler(int button, int x, int y, t_fractal *fractal);
-int			ft_track_mouse(int x, int y, t_fractal *fractal);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:49:19 by melmarti          #+#    #+#             */
-/*   Updated: 2024/02/05 19:53:02 by melmarti         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:58:49 by melmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ static void	ft_put_color(int x, int y, t_img *img, int color)
 
 static void	ft_which_fractal(t_complex *z, t_complex *c, t_fractal *fractal)
 {
-	if (!ft_strcmp("Julia", fractal->name))
+	if (!ft_strcmp("Julia", fractal->name)
+		|| !ft_strcmp("Burning bird julia", fractal->name))
 	{
-		c->x = fractal->julia_x;
-		c->y = fractal->julia_y;
+		c->x = fractal->real;
+		c->y = fractal->im;
 	}
 	else
 	{
@@ -47,13 +48,14 @@ void	ft_color_pxl(double x, double y, t_fractal *fractal)
 	i = 0;
 	while (i < fractal->iter)
 	{
-		if (!ft_strcmp("Burning_bird", fractal->name))
-			z = ft_remarkable(z);
-		else 
+		if (!ft_strcmp("Burning bird", fractal->name)
+			|| !ft_strcmp("Burning bird julia", fractal->name))
+			z = ft_sum_complex(ft_remarkable(z), c);
+		else
 			z = ft_sum_complex(ft_square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > 4)
 		{
-			color = ft_scale(i, 0, 1000, 40);
+			color = ft_scale(i * 3, fractal->colors, 500, fractal->iter);
 			ft_put_color(x, y, &fractal->img, color);
 			return ;
 		}

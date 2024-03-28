@@ -6,7 +6,7 @@
 /*   By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:49:31 by melmarti          #+#    #+#             */
-/*   Updated: 2024/02/05 19:51:39 by melmarti         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:47:58 by melmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ void	ft_events_init(t_fractal *fractal)
 		ft_mouse_handler, fractal);
 	mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask,
 		ft_close_handler, fractal);
-	mlx_hook(fractal->mlx_window, MotionNotify, PointerMotionMask,
-		ft_track_mouse, fractal);
 }
 
 void	ft_fractal_data(t_fractal *fractal, char *real, char *im)
 {
-	if (!ft_strcmp("Julia", fractal->name))
+	if (!ft_strcmp("Julia", fractal->name) || !ft_strcmp("Burning bird julia",
+			fractal->name))
 	{
-		fractal->julia_x = ft_atod(real);
-		fractal->julia_y = ft_atod(im);
+		fractal->real = ft_atod(real);
+		fractal->im = ft_atod(im);
 	}
-	fractal->iter = 50;
+	fractal->iter = 40;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
+	fractal->colors = 0;
 }
 
 void	ft_fractal_init(t_fractal *fractal)
@@ -62,20 +62,3 @@ void	ft_fractal_init(t_fractal *fractal)
 	fractal->img.pixel_ptr = mlx_get_data_addr(fractal->img.img_ptr,
 			&fractal->img.bpp, &fractal->img.line_len, &fractal->img.endian);
 }
-
-int	ft_track_mouse(int x, int y, t_fractal *fractal)
-{
-
-	(void)x;
-	(void)y;
-	if (!ft_strcmp(fractal->name, "Julia"))
-	{
-		fractal->julia_x = (ft_scale(x, -2, 2, WIDTH) * fractal->zoom)
-			+ fractal->shift_x;
-		fractal->julia_y = (ft_scale(y, 2, -2, HEIGHT) * fractal->zoom)
-			+ fractal->shift_y;
-		ft_fractal_render(fractal);
-	}
-	return (0);
-} 
-

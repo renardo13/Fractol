@@ -6,14 +6,14 @@
 #    By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 14:49:52 by melmarti          #+#    #+#              #
-#    Updated: 2024/02/02 15:40:35 by melmarti         ###   ########.fr        #
+#    Updated: 2024/02/20 13:51:13 by melmarti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -lm -lX11 -lXext
-MLXLIB = /home/melmarti/42_projects/fractol/mlx/libmlx_Linux.a
+MLXLIB = mlx/libmlx_Linux.a 
 
 SRC = main.c \
 ft_strcmp.c \
@@ -30,15 +30,20 @@ ft_key_handler.c \
 ft_init.c \
 
 OBJ = $(SRC:.c=.o)
+
 NAME = fractol
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(MLXLIB)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLXFLAGS) $(MLXLIB)
+
+$(MLXLIB):
+	make -C mlx
 
 clean:
 	rm -f $(OBJ)
+	make -C mlx clean
 
 fclean: clean
 	rm -f $(NAME)
