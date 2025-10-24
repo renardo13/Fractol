@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: melmarti <melmarti@student.42.fr>          +#+  +:+       +#+         #
+#    By: renard <renard@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/02 14:49:52 by melmarti          #+#    #+#              #
-#    Updated: 2024/02/20 13:51:13 by melmarti         ###   ########.fr        #
+#    Updated: 2025/10/22 13:10:29 by renard           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -lm -lX11 -lXext
+MLXFLAGS = mlx/libmlx_Linux.a -lX11 -lXext -lXfixes -lXrandr -lXinerama -lXcursor -lrt -lm
 MLXLIB = mlx/libmlx_Linux.a 
 
 SRC = main.c \
@@ -36,7 +36,7 @@ NAME = fractol
 all: $(NAME)
 
 $(NAME): $(OBJ) $(MLXLIB)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLXFLAGS) $(MLXLIB)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLXFLAGS)
 
 $(MLXLIB):
 	make -C mlx
