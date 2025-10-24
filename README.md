@@ -7,7 +7,7 @@ With this project you’ll learn how to render complex mathematical images, hand
 
 ### Usage
 
--> Clone the mlx library
+-> Clone the mlx library after cloning the fractol repo
 
 ```bash
 git clone https://github.com/42Paris/minilibx-linux.git mlx
