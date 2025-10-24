@@ -1,5 +1,7 @@
 🌀 Fractol
 
+![a9un7m](https://github.com/user-attachments/assets/fc39866c-8340-409c-8a94-a1b38f91c8cb)
+
 Fractol is a project that visualizes fractal sets (such as the Mandelbrot or Julia sets) using the graphics library MiniLibX (commonly called “mlx”).
 With this project you’ll learn how to render complex mathematical images, handle user interaction (mouse, keyboard) and manage graphics pipeline in C.
 
